@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs', {title: title}) %>
+<a href="/">Volver</a>
+
+<% 
+if(locals && locals.errores) {
+    errores.forEach(function(error) { %>
+      <div class="error"><%= error.msg %></div>
+    <%
+    }) 
+}
+%>
+
+<form action="/crear" method="POST" enctype="multipart/form-data">
+    <input type="text" name="nombre" placeholder="Nombre..." />
+    <input type="text" name="edad" placeholder="Edad..." />
+    <input type="file" name="avatar" />
+    <input type="submit" value="Crear!" />
+</form>
+</body>
+</html>

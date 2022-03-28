@@ -1,0 +1,8 @@
+<%- include('partials/header.ejs', {title: title}) %>
+<a href="/">Volver</a>
+<form action="/actualizar?_method=PUT" method="POST">
+    <input type="hidden" name="id" value="<%= usuario.id %>" />
+    <input type="text" name="nombre" placeholder="Nombre..." value="<%= usuario.nombre %>" />
+    <input type="text" name="edad" placeholder="Edad..." value="<%= usuario.edad %>" />
+    <input type="submit" value="Modificar!" />
+</form>

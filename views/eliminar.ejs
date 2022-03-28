@@ -1,0 +1,9 @@
+<%- include('partials/header.ejs', {title: title}) %>
+<a href="/">Volver</a>
+<h3>Está seguro que desea eliminar el usuario: <%= usuario.nombre %>?</h3>
+<form action="/eliminar?_method=DELETE" method="POST">
+    <input type="hidden" name="id" value="<%= usuario.id %>" />
+    <input type="submit" value="Eliminar!" />
+</form>
+</body>
+</html>

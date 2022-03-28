@@ -1,0 +1,50 @@
+<%- include('partials/header.ejs', {title: title}) %>
+    
+    <h1>Usuarios</h1>
+
+    <div id="controles-usuarios">
+        <form action='/' method='GET'>
+          <input type="text" name="search" placeholder="Buscar usuario...">
+          <input type="submit" value="Buscar!">
+        </form>
+    
+        <a class="btn" href="/crear">Nuevo Usuario</a>
+
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="200px"></th>
+          <th width="100px">Avatar</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% 
+        usuarios.map(function(usuario, index) {
+          %>
+          <tr class="<%= index % 2 === 0 ? 'par' : 'impar' %>">
+            <td>
+              <a class="btn" href="/actualizar/<%= usuario.id %>">Modificar</a>
+              <a class="btn" href="/eliminar/<%= usuario.id %>">Eliminar</a>
+            </td>
+            <td>
+              <%
+                if(usuario.avatar) {
+                  %>
+                  <img src="/images/users/<%= usuario.avatar %>" width="100px" />
+                  <%
+                }
+              %>
+            </td>
+            <td><%= usuario.nombre %></td>
+            <td><%= usuario.edad %></td>
+          <%
+        });
+        %>
+      </tbody>
+    </table>    
+  </body>
+</html>
